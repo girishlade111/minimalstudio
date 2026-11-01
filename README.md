@@ -47,7 +47,7 @@ Minimal Studio is a single-page landing kit for studios, agencies, freelancers a
 
 ## Requirements
 
-- **Node.js 20 or newer** (Node 22 LTS recommended)
+- **Node.js 22.12 or newer** (required by Astro 7; Node 22 LTS recommended)
 - **npm 10 or newer** (pnpm, yarn and bun also work)
 
 ## Quick start
@@ -232,13 +232,32 @@ The template ships semantic landmarks (`<nav>`, `<main>`, `<footer>`), a single 
 
 The build is fully static. `npm run build` writes plain HTML, CSS and assets to `dist/`.
 
+### Live site (GitHub Pages)
+
+Deployed at **<https://girishlade111.github.io/minimalstudio/>**.
+
+`.github/workflows/deploy.yml` builds on every push to `main` and deploys with the GitHub Pages artifact pipeline:
+
+1. Checkout, Node 22, `npm ci`, `npm run build`.
+2. `actions/configure-pages` and `actions/upload-pages-artifact` (path `./dist`).
+3. `actions/deploy-pages` in the `github-pages` environment.
+
+Pages is configured with **Build and deployment → Source: GitHub Actions**. Because the site is served from a subpath, `astro.config.mjs` sets:
+
+```js
+site: "https://girishlade111.github.io",
+base: process.env.BASE_PATH || "/minimalstudio/",
+```
+
+Keep `base` in sync with the repository name. Root-relative links must use `import.meta.env.BASE_URL` as `Navigation.astro` does, otherwise they point at the domain root.
+
+### Other hosts
+
 **Vercel** — import the repository, framework preset **Astro**, build command `npm run build`, output directory `dist`.
 
 **Netlify** — build command `npm run build`, publish directory `dist`.
 
-**Cloudflare Pages** — build command `npm run build`, output directory `dist`, environment variable `NODE_VERSION=20` or newer.
-
-**GitHub Pages** — build in Actions, upload `dist/` as a Pages artifact. If the site is served from a subpath, set `base: "/repo-name/"` in `astro.config.mjs` alongside `site`.
+**Cloudflare Pages** — build command `npm run build`, output directory `dist`, environment variable `NODE_VERSION=22`.
 
 Remember to update `site` in `astro.config.mjs` and the canonical/Open Graph URLs in `BaseHead.astro` to the real domain before the first deploy.
 
@@ -249,6 +268,7 @@ Remember to update `site` in `astro.config.mjs` and the canonical/Open Graph URL
 | Styles missing after `npm install` | Tailwind 4 needs the Vite plugin. Confirm `@tailwindcss/vite` is installed and registered in `astro.config.mjs`. |
 | Port already in use | Run `npm run dev -- --port 4322`. |
 | Sitemap has `yourwebsite.com` URLs | `site` in `astro.config.mjs` was not changed. |
+| Build fails with "Node.js v20 is not supported by Astro" | Astro 7 needs Node 22.12+. The workflow pins Node 22; local machines must upgrade too. |
 | Social previews show no image | `og-image.jpg` is not present in `public/`, or the URL in `BaseHead.astro` is still a placeholder. |
 | TypeScript cannot resolve `@/...` | Confirm `tsconfig.json` still maps `"@/*": ["src/*"]` and that the editor uses the workspace TypeScript version. |
 
