@@ -1,0 +1,71 @@
+---
+const footerLinks = [
+  {
+    title: "Navigation",
+    links: [
+      { label: "Work", href: "#work" },
+      { label: "How it works", href: "#how" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "FAQ", href: "#faq" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      {
+        label: "Lexington Themes.",
+        href: "https://www.lexingtonthemes.com",
+      },
+      {
+        label: "Oxbow UI",
+        href: "https://www.oxbowui.com",
+      },
+    ],
+  },
+
+  {
+    title: "Socials",
+    links: [
+      {
+        label: "@Mike_Andreuzza",
+        href: "https://twitter.com/Mike_Andreuzza",
+      },
+    ],
+  },
+];
+---
+
+<footer class="overflow-hidden">
+  <div class="px-8 pt-12 pb-24 max-w-xl mx-auto">
+    <div class="grid grid-cols-2 lg:grid-cols-3">
+      {
+        footerLinks.map((section) => (
+          <div>
+            <h3 class="text-base-900 text-sm">{section.title}</h3>
+            <ul
+              role="list"
+              class="mt-2 text-xs flex flex-col gap-1 text-base-600"
+            >
+              {section.links.map((link) => (
+                <li>
+                  <a href={link.href} class="hover:text-base-900">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+    <div class="mt-12">
+      <div class="text-sm text-base-900">
+        © 2025 MicroStudio. All rights reserved.
+      </div>
+      <p class="text-xs text-base-600 mt-1 text-balance">
+        MicroStudio is not affiliated with Stripe, Breeew, Astro, or Tailwind
+        Labs, nor is it endorsed or sponsored by them.
+      </p>
+    </div>
+  </div>
+</footer>

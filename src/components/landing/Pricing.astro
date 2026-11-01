@@ -1,0 +1,206 @@
+---
+import FigmaLogo from "@/components/assets/FigmaLogo.astro";
+import AstroLogo from "@/components/assets/AstroLogo.astro";
+import StripeLogo from "@/components/assets/StripeLogo.astro";
+import TailwindLogo from "@/components/assets/TailwindLogo.astro";
+import OrchestraLogo from "@/components/assets/OrchestraLogo.astro";
+
+const pricingTiers = [
+  {
+    title: "Design + Dev",
+    price: "$1999",
+    note: "/monthly",
+    subnote: "USD + Local tax",
+    description:
+      "Ideal for startups requiring design and front-end development services.",
+    highlight: "Same as in Design plus:",
+    features: [
+      "Astro & Tailwind Code",
+      "Clean & accessible code",
+      "Essential SEO",
+      "Support & maintenance",
+    ],
+  },
+  {
+    title: "Design",
+    price: "$1499",
+    note: "/monthly",
+    subnote: "USD + Local tax",
+    description:
+      "Ideal for emerging businesses requiring continuous design assistance.",
+    highlight: "What you get:",
+    features: [
+      "Design in Figma",
+      "1 request at the time",
+      "Unlimited feedback",
+      "Delivery within 2–3 days",
+    ],
+  },
+  {
+    title: "One off",
+    price: "$999",
+    note: "",
+    subnote: "USD + Local tax",
+    description:
+      "For anyone who only needs a quick landing page or just a quick redesign!",
+    highlight: "What you get:",
+    features: [
+      "2–3 days turnaround time",
+      "Design or development",
+      "1 revision included",
+    ],
+  },
+];
+---
+
+<section class="scroll-mt-4" id="pricing">
+  <div class="px-8 md:px-12 py-12 max-w-7xl mx-auto">
+    <div
+      class="grid grid-cols-1 gap-px md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    >
+      <section
+        class="col-span-full lg:col-span-1 bg-white flex flex-col justify-between rounded-3xl h-full text-base-900 p-8"
+      >
+        <div>
+          <div class="flex gap-2">
+            <FigmaLogo class="h-4 text-base-900" />
+            <AstroLogo class="h-4 text-base-900" />
+            <TailwindLogo class="h-3 text-base-900" />
+          </div>
+          <p class="text-2xl tracking-tight font-medium text-base-900 mt-4">
+            Tailored design & <span class="md:block">dev packages</span>
+          </p>
+          <p class="text-xs text-base-500 mt-2">
+            Flexible pricing to enhance your online presence at every stage.
+          </p>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 text-base-900">
+            <p class="text-xs">1 spots available</p>
+            <div class="h-2 w-2 rounded-full bg-black"></div>
+            <div class="h-2 w-2 rounded-full border border-black"></div>
+          </div>
+          <div class="border-t border-base-200 flex flex-col pt-2 mt-2">
+            <span class="text-xs text-base-600 font-normal">
+              Project management with <span
+                class="italic text-base-900 font-medium">Orchestra</span
+              >, secure payments with <span
+                class="italic text-base-900 font-medium">Stripe</span
+              > and the freedom of
+              <span class="italic text-base-900 font-medium">
+                Canceling your subscription anytime:</span
+              >
+            </span>
+            <div class="inline-flex items-center gap-2 mt-4 text-base-900">
+              <OrchestraLogo class="h-4 text-base-900" />
+              <span aria-hidden="true" class="text-base-900 pointer-events-none"
+                >/</span
+              >
+              <StripeLogo class="h-4 text-base-900" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {
+        pricingTiers.map((tier) => (
+          <section class="bg-white flex flex-col justify-between rounded-3xl h-full text-base-900 p-8">
+            <div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-lg text-base-900">{tier.title}</h3>
+                <p class="text-xl font-medium text-base-900 mt-2">
+                  {tier.price}
+                  {tier.note && (
+                    <span class="text-sm text-base-500">{tier.note}</span>
+                  )}
+                  <span class="text-base-900 block text-xs">
+                    {tier.subnote}
+                  </span>
+                </p>
+              </div>
+              <p class="text-xs text-base-600 mt-4">{tier.description}</p>
+
+              <div class="mt-6">
+                <p class="text-xs uppercase text-base-900">{tier.highlight}</p>
+                <ul
+                  class="flex flex-col mt-2 text-sm text-base-600 gap-y-1 list-disc pl-4"
+                  role="list"
+                >
+                  {tier.features.map((feature) => (
+                    <li>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <button class="rounded-full px-4 border py-2 text-sm font-semibold transition-all flex items-center justify-between bg-white text-base-900 h-10 border-base-200 focus:ring-2 shadow-base-500/5 focus:ring-blue-950 focus:ring-offset-2 ring-offset-base-200 hover:bg-black hover:text-white duration-300 w-full">
+                Get started <span>&rarr;</span>
+              </button>
+            </div>
+          </section>
+        ))
+      }
+
+      <section
+        class="h-full p-8 flex flex-col col-span-full md:col-span-1 xl:col-span-2 justify-between order-last md:order-none bg-white rounded-3xl"
+      >
+        <p class="text-lg text-base-900 lg:text-xl">Good to know</p>
+        <div class="mt-4">
+          <p class="text-xs text-base-500 font-normal">
+            Microstudio focuses exclusively on design and front-end development.
+            The following services are not included:
+            <span class="text-base-900 italic font-medium">design systems</span
+            >,
+            <span class="text-base-900 italic font-medium">3D</span>,
+            <span class="text-base-900 italic font-medium">prototypes</span>,
+            <span class="text-base-900 italic font-medium">mobile apps</span>,
+            <span class="text-base-900 italic font-medium">illustrations</span>,
+            <span class="text-base-900 italic font-medium">CMS setups</span>,
+            <span class="text-base-900 italic font-medium">back-end work</span>,
+            <span class="text-base-900 italic font-medium">hosting</span>,
+            <span class="text-base-900 italic font-medium">marketing</span>,
+            <span class="text-base-900 italic font-medium">copywriting</span>,
+            <span class="text-base-900 italic font-medium">animations</span>,
+            and
+            <span class="text-base-900 italic font-medium"
+              >overly complex builds</span
+            >.
+          </p>
+
+          <div class="border-t border-base-200 flex flex-col pt-4 mt-4">
+            <p class="text-xs text-base-400">
+              Minimal supports English, Spanish, Italian, and Swedish. Pick
+              what’s comfortable!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="h-full rounded-3xl justify-between col-span-full lg:col-span-1 xl:col-span-2 bg-white p-8"
+      >
+        <div class="flex flex-col justify-between h-full">
+          <h3 class="text-lg text-base-900 lg:text-xl">Book an intro call</h3>
+          <p class="text-xs text-base-500 mt-4 text-balance">
+            Not sure if it’s the right fit? Let’s talk. Book a quick intro call
+            and get a feel for how Minimal works.
+          </p>
+
+          <a
+            href="#_"
+            class="text-sm text-base-900 hover:text-blue-500 mt-4 font-medium"
+          >
+            Book a call
+          </a>
+
+          <div class="border-t border-base-200 pt-4 mt-4">
+            <p class="text-xs text-base-400">(Europe/Helsinki) Time</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

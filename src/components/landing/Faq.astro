@@ -1,0 +1,81 @@
+---
+const faqs = [
+  {
+    question: "Who runs the studio?",
+    answer:
+      "My name is Michael Andreuzza, UI Designer and Front-end Developer. I also build products for myself. Learn more at michaelandreuzza.com.",
+  },
+  {
+    question: "How do we communicate and manage the project?",
+    answer:
+      "Minimal uses Breeew for project management, ensuring seamless communication and collaboration.",
+  },
+  {
+    question: "How quickly will I get some work done?",
+    answer:
+      "Expect the initial concept within 2–3 days. For larger projects, timelines may extend up to 4 weeks. Revisions are unlimited until you're satisfied.",
+  },
+  {
+    question: "Why do you only have two spots?",
+    answer:
+      "To ensure high-quality results and focused attention, minimal only takes on two projects at a time. This allows for timely and dedicated work.",
+  },
+  {
+    question: "What if I don’t like the design?",
+    answer:
+      "Your satisfaction is the priority. That’s why minimal offers unlimited design requests and revisions.",
+  },
+  {
+    question: "Are there any refunds?",
+    answer:
+      "Due to the creative effort and research required, refunds aren't offered once work begins. However, if no work has started and the fit isn’t right after our initial discussion, you're eligible for a 100% refund.",
+  },
+];
+---
+
+<section>
+  <div class="px-8 py-12 max-w-xl mx-auto">
+    <h2 class="text-4xl tracking-tight text-base-900 text-balance font-medium">
+      The answers to the most <span class="block"
+        >popular frequent questions</span
+      >
+    </h2>
+    <p class="mt-2 text-sm text-base-600">
+      Can't find your answer? Send an
+      <a
+        class="text-blue-500 hover:text-base-900 duration-200"
+        href="mailto:michael@andreuzza.com"
+      >
+        email
+      </a>
+      and minimal will get back to you.
+    </p>
+
+    <div
+      class="mt-8 bg-white rounded-3xl text-base-900 divide-y divide-base-100"
+    >
+      {
+        faqs.map((faq, i) => (
+          <details class="px-8 py-6 group">
+            <summary class="cursor-pointer text-sm font-medium  flex justify-between items-center">
+              {faq.question}
+              <svg
+                class="size-4 ml-2 transform transition-transform group-open:rotate-180"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 10.939l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0l-4.24-4.24a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </summary>
+            <p class="mt-2 text-xs text-base-600">{faq.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

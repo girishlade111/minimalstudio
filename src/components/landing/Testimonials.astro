@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import Avatar from "@/images/customers/avatar.jpeg";
+---
+<section>
+  <div class="px-8 py-12 max-w-xl mx-auto text-center">
+    <blockquote class="text-base font-medium text-base-900 italic">
+      “Working with Microblog felt like cheating — they understood our product
+      faster than we did, delivered stunning UI, and somehow shipped
+      production-ready code the same week. If you're thinking twice, stop.”
+    </blockquote>
+    <figure class="mt-6 flex flex-col items-center gap-3">
+      <Image
+        src={Avatar}
+        width={120}
+        height={120}
+        loading="eager"
+        decoding="async"
+        alt="Photo of Serena Vasquez"
+        class="size-12 rounded-full grayscale border"
+      />
+      <figcaption>
+        <h3 class="text-base-900 text-sm font-medium mt-2">Serena Vasquez</h3>
+        <p class="text-xs text-base-600">Product Lead at NovaTech</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
