@@ -6,7 +6,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  // Add your domain name here
-  site: "https://yourwebsite.com/",
+  // Project site on GitHub Pages: https://girishlade111.github.io/minimalstudio/
+  site: "https://girishlade111.github.io",
+  base: process.env.BASE_PATH || "/minimalstudio/",
   integrations: [ sitemap()]
 });
